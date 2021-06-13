@@ -183,18 +183,18 @@ namespace Assignment_2
             try
             {
                 int res = -1;
-                int[] count = new int[nums.Length];
+                int[] count = new int[501];
                 //traverse every element in the array
                 foreach (int a in nums)
                 {
                     count[a]++;
                 }
-                //finding the maximum repeated lucky number using math.max() method
-                for (int i = 1; (i < nums.Length); i++)
+                //finding the repeated lucky number 
+                for (int i = 500; i >=1; i--)
                 {
-                    if ((count[i] == i))
+                    if (count[i] == i)
                     {
-                        res = Math.Max(i, res);
+                        return i;
                     }
 
                 }
