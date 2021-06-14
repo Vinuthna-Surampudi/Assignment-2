@@ -304,20 +304,21 @@ namespace Assignment_2
         {
             try
             {
+                // initialize new lists to store the top five average score of the students in it 
                 List<int[]> l = new List<int[]>();
                 List<int[,]> res = new List<int[,]>();
 
                 for (int i = 0; i < items.GetLength(0); i++)
                 {
-                    l.Add(new int[] { items[i, 0], items[i, 1] });
+                    l.Add(new int[] { items[i, 0], items[i, 1] }); // adding all the scores to the new list l
                 }
-
+                //now sort the scores to find the maximum 5 scores of every student
                 l.Sort((a, b) => { return (a[0] < b[0]) ? -1 : ((a[0] == b[0]) ? ((a[1] <= b[1]) ? 1 : -1) : 1); });
                 int x = l[0][0];
                 int count = 1;
                 int sum = l[0][1];
 
-
+                //now consider the top 5 scores of the student and find the average of top 5 scores
                 for (int i = 1; i < l.Count; i++)
                 {
                     if (l[i][0] == x && count < 5)
@@ -336,7 +337,7 @@ namespace Assignment_2
                     }
                 }
                 res.Add(new int[,] { { x, sum / 5 } });
-                Console.WriteLine("[" + x + "," + sum / 5 + "]]");
+                Console.WriteLine("[" + x + "," + sum / 5 + "]]"); //print the result in the desired format
             }
             catch (Exception)
             {
